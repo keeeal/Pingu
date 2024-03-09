@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from functools import partial
 from typing import Optional, Union
 
@@ -31,7 +31,7 @@ class Pingu(Bot):
             len(pins),
             total=max_pins,
             elapsed=(
-                (max(m.created_at for m in pins) - channel.created_at).total_seconds()
+                (datetime.now(timezone.utc) - channel.created_at).total_seconds()
                 if pins
                 else 0
             ),
