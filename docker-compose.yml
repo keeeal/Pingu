@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  bot:
+    image: pingu:latest
+    build:
+      context: .
+      target: app
+    volumes:
+      - ./config:/app/config
+    environment:
+      DISCORD_TOKEN_FILE: /run/secrets/discord_token
+    secrets:
+       - discord_token
+
+  dev:
+    image: pingu:dev
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+
+secrets:
+  discord_token:
+    file: secrets/discord_token
