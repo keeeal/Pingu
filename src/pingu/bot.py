@@ -38,7 +38,7 @@ class Pingu(Bot):
         )
 
         embed = (
-            Embed()
+            Embed(title=None if len(pins) < max_pins else "⚠️🚨🚧 FULL PINS 🚧🚨⚠️")
             .add_field(
                 name="📌",
                 value="",
@@ -52,7 +52,6 @@ class Pingu(Bot):
                 ),
             )
         )
-
         if pins:
             embed.add_field(
                 name="full pins",
